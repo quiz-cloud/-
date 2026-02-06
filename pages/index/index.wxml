@@ -1,4 +1,4 @@
-<!-- 自定义导航栏 -->
+<!--index.wxml-->
 <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
   <view class="nav-title">工程创新训练 II</view>
 </view>
@@ -8,10 +8,7 @@
   <!-- 顶部黄色背景区域 -->
   <view class="header-section">
     <view class="header-bg">
-      <!-- 右上角插图 -->
       <image class="header-illustration" src="/images/header-illustration.png" mode="aspectFit"></image>
-      
-      <!-- 实训时间信息 -->
       <view class="training-info">
         <view class="training-item">
           <text class="label">集中实训</text>
@@ -43,7 +40,7 @@
     </view>
   </view>
 
-  <!---- 当前课程卡片 -->
+  <!-- 当前课程卡片 -->
   <view class="course-card">
     <view class="course-header">
       <text class="course-name">木工创意</text>
@@ -117,63 +114,47 @@
     </view>
   </view>
 
-<!-- 功能按钮网格 -->
-<view class="function-grid">
-  <button class="func-btn" bindtap="navigateTo" data-page="intro">
-    <view class="btn-icon yellow">
-      <text class="iconfont icon-book"></text>
-    </view>
-    <text class="btn-text">课程介绍</text>
-  </button>
-  
-  <button class="func-btn" bindtap="navigateTo" data-page="safety">
-    <view class="btn-icon orange">
-      <text class="iconfont icon-safe"></text>
-    </view>
-    <text class="btn-text">安全须知</text>
-  </button>
-  
-  <button class="func-btn" bindtap="navigateTo" data-page="materials">
-    <view class="btn-icon blue">
-      <text class="iconfont icon-file"></text>
-    </view>
-    <text class="btn-text">工种资料</text>
-  </button>
-  
-  <button class="func-btn" bindtap="navigateTo" data-page="leave">
-    <view class="btn-icon green">
-      <text class="iconfont icon-calendar"></text>
-    </view>
-    <text class="btn-text">请假补课</text>
-  </button>
-  
-  <button class="func-btn" bindtap="navigateTo" data-page="project">
-    <view class="btn-icon purple">
-      <text class="iconfont icon-project"></text>
-    </view>
-    <text class="btn-text">分散项目</text>
-  </button>
-  
-  <button class="func-btn" bindtap="navigateTo" data-page="team">
-    <view class="btn-icon pink">
-      <text class="iconfont icon-team"></text>
-    </view>
-    <text class="btn-text">分散组队</text>
-  </button>
-  
-  <button class="func-btn" bindtap="navigateTo" data-page="process">
-    <view class="btn-icon cyan">
-      <text class="iconfont icon-setting"></text>
-    </view>
-    <text class="btn-text">加工须知</text>
-  </button>
-  
-  <button class="func-btn" bindtap="navigateTo" data-page="report">
-    <view class="btn-icon red">
-      <text class="iconfont icon-edit"></text>
-    </view>
-    <text class="btn-text">报告递交</text>
-  </button>
-</view>
+  <!-- 功能按钮网格 -->
+  <view class="function-grid">
+    <button class="func-btn" bindtap="navigateTo" data-page="intro">
+      <view class="btn-icon yellow">📚</view>
+      <text class="btn-text">课程介绍</text>
+    </button>
+    
+    <button class="func-btn" bindtap="navigateTo" data-page="safety">
+      <view class="btn-icon orange">🛡️</view>
+      <text class="btn-text">安全须知</text>
+    </button>
+    
+    <button class="func-btn" bindtap="navigateTo" data-page="materials">
+      <view class="btn-icon blue">📋</view>
+      <text class="btn-text">工种资料</text>
+    </button>
+    
+    <button class="func-btn" bindtap="navigateTo" data-page="leave">
+      <view class="btn-icon green">📅</view>
+      <text class="btn-text">请假补课</text>
+    </button>
+    
+    <button class="func-btn" bindtap="navigateTo" data-page="project">
+      <view class="btn-icon purple">🔧</view>
+      <text class="btn-text">分散项目</text>
+    </button>
+    
+    <button class="func-btn" bindtap="navigateTo" data-page="team">
+      <view class="btn-icon pink">👥</view>
+      <text class="btn-text">分散组队</text>
+    </button>
+    
+    <button class="func-btn" bindtap="navigateTo" data-page="process">
+      <view class="btn-icon cyan">⚙️</view>
+      <text class="btn-text">加工须知</text>
+    </button>
+    
+    <button class="func-btn" bindtap="navigateTo" data-page="report">
+      <view class="btn-icon red">📝</view>
+      <text class="btn-text">报告递交</text>
+    </button>
+  </view>
 
 </view>
