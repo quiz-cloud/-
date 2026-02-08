@@ -1,66 +1,51 @@
-// pages/home/home.js
+const { getSchedule } = require("../../services/schedule");
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    selectedConcentratedIndex: 0,
+    selectedDispersedIndex: 0,
+    concentratedTime: {},
+    dispersedTime: {},
+    concentratedDates: [],
+    concentratedMorningCourses: [],
+    concentratedAfternoonCourses: [],
+    dispersedDates: [],
+    dispersedMorningCourses: [],
+    dispersedAfternoonRooms: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad() {
+    // 首次加载时获取课表数据。
+    this.loadSchedule();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  loadSchedule() {
+    // 根据接口返回更新页面状态，失败时重置为空。
+    getSchedule()
+      .then((schedule) => {
+        this.setData(schedule || {});
+      })
+      .catch(() => {
+        this.setData({
+          concentratedTime: {},
+          dispersedTime: {},
+          concentratedDates: [],
+          concentratedMorningCourses: [],
+          concentratedAfternoonCourses: [],
+          dispersedDates: [],
+          dispersedMorningCourses: [],
+          dispersedAfternoonRooms: []
+        });
+      });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  goToPlaceholder(e) {
+    // 功能尚未接入时的提示。
+    const title = e.currentTarget.dataset.title || "功能";
+    wx.showToast({
+      title: `${title}功能未接入`,
+      icon: "none",
+      duration: 2000
+    });
   }
-})
+});

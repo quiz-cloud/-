@@ -1,2 +1,104 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<view class="page">
+  <!-- 集中实训 -->
+  <view class="section">
+    <view class="table">
+      <view class="row">
+        <view class="label-cell section-label concentrated">
+          <text>集中</text>
+          <text>实训</text>
+        </view>
+        <view class="row-content">
+          <view class="date-cell {{selectedConcentratedIndex == index ? 'is-selected' : ''}}" wx:for="{{concentratedDates}}" wx:key="index">
+            <text class="day">{{item.day}}</text>
+            <text class="date">{{item.date}}</text>
+            <view class="date-underline" wx:if="{{selectedConcentratedIndex == index}}"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="label-cell time-label">
+          <text class="label-title">上午</text>
+          <text class="label-time">{{concentratedTime.morningStart}}</text>
+          <text class="label-time">{{concentratedTime.morningEnd}}</text>
+        </view>
+        <view class="row-content">
+          <view class="course-cell {{selectedConcentratedIndex == index ? 'is-highlight' : ''}}" wx:for="{{concentratedMorningCourses}}" wx:key="index">
+            <text class="course-name">{{item.name}}</text>
+            <text class="course-room">{{item.room}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="label-cell time-label">
+          <text class="label-title">下午</text>
+          <text class="label-time">{{concentratedTime.afternoonStart}}</text>
+          <text class="label-time">{{concentratedTime.afternoonEnd}}</text>
+        </view>
+        <view class="row-content">
+          <view class="course-cell" wx:for="{{concentratedAfternoonCourses}}" wx:key="index">
+            <text class="course-name">{{item.name}}</text>
+            <text class="course-room">{{item.room}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="info-bar concentrated-bar">
+      <text>集中分组：J5</text>
+      <text>课程学号：017</text>
+    </view>
+
+    <view class="action-row">
+      <!-- TODO: 工种资料 -> /pages/materials/materials -->
+      <view class="action-btn" bindtap="goToPlaceholder" data-title="工种资料">工种资料</view>
+      <!-- TODO: 请假补课 -> /pages/leave-makeup/leave-makeup -->
+      <view class="action-btn" bindtap="goToPlaceholder" data-title="请假补课">请假补课</view>
+    </view>
+  </view>
+
+  <!-- 分散实训 -->
+  <view class="section">
+    <view class="table">
+      <view class="row">
+        <view class="label-cell section-label dispersed">
+          <text>分散</text>
+          <text>实训</text>
+        </view>
+        <view class="row-content">
+          <view class="date-cell" wx:for="{{dispersedDates}}" wx:key="index">
+            <text class="day">{{item.day}}</text>
+            <text class="date">{{item.date}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="label-cell time-label">
+          <text class="label-title">全天</text>
+          <text class="label-time">{{dispersedTime.morningStart}}-{{dispersedTime.morningEnd}}</text>
+          <text class="label-time">{{dispersedTime.afternoonStart}}-{{dispersedTime.afternoonEnd}}</text>
+        </view>
+        <view class="row-content">
+          <view class="course-cell" wx:for="{{dispersedMorningCourses}}" wx:key="index">
+            <text class="course-name">{{item.name}}</text>
+            <text class="course-room">{{item.room}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="info-bar dispersed-bar">
+      <text>分散小组：待组队</text>
+      <text>课程学号：017</text>
+    </view>
+
+    <view class="action-row">
+      <!-- TODO: 分散项目 -> /pages/dispersed-project/dispersed-project -->
+      <view class="action-btn" bindtap="goToPlaceholder" data-title="分散项目">分散项目</view>
+      <!-- TODO: 分散组队 -> /pages/dispersed-team/dispersed-team -->
+      <view class="action-btn" bindtap="goToPlaceholder" data-title="分散组队">分散组队</view>
+    </view>
+  </view>
+</view>
