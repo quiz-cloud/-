@@ -1,6 +1,15 @@
-<view class="page">
+<view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+  <view class="nav-content">
+    <view class="nav-back" bindtap="goBack">
+      <text class="back-icon">&lt;</text>
+    </view>
+    <text class="nav-title">全部课表</text>
+  </view>
+</view>
+
+<view class="page" style="padding-top: {{statusBarHeight + 44}}px;">
   <!-- 集中实训 -->
-  <view class="section">
+  <view class="section-card">
     <view class="table">
       <view class="row">
         <view class="label-cell section-label concentrated">
@@ -25,7 +34,10 @@
         <view class="row-content">
           <view class="course-cell {{selectedConcentratedIndex == index ? 'is-highlight' : ''}}" wx:for="{{concentratedMorningCourses}}" wx:key="index">
             <text class="course-name">{{item.name}}</text>
-            <text class="course-room">{{item.room}}</text>
+            <view class="course-room">
+              <view class="room-dot"></view>
+              <text>{{item.room}}</text>
+            </view>
           </view>
         </view>
       </view>
@@ -37,9 +49,12 @@
           <text class="label-time">{{concentratedTime.afternoonEnd}}</text>
         </view>
         <view class="row-content">
-          <view class="course-cell" wx:for="{{concentratedAfternoonCourses}}" wx:key="index">
+          <view class="course-cell {{selectedConcentratedIndex == index ? 'is-highlight' : ''}}" wx:for="{{concentratedAfternoonCourses}}" wx:key="index">
             <text class="course-name">{{item.name}}</text>
-            <text class="course-room">{{item.room}}</text>
+            <view class="course-room">
+              <view class="room-dot"></view>
+              <text>{{item.room}}</text>
+            </view>
           </view>
         </view>
       </view>
@@ -51,15 +66,13 @@
     </view>
 
     <view class="action-row">
-      <!-- TODO: 工种资料 -> /pages/materials/materials -->
       <view class="action-btn" bindtap="goToPlaceholder" data-title="工种资料">工种资料</view>
-      <!-- TODO: 请假补课 -> /pages/leave-makeup/leave-makeup -->
       <view class="action-btn" bindtap="goToPlaceholder" data-title="请假补课">请假补课</view>
     </view>
   </view>
 
   <!-- 分散实训 -->
-  <view class="section">
+  <view class="section-card">
     <view class="table">
       <view class="row">
         <view class="label-cell section-label dispersed">
@@ -76,14 +89,21 @@
 
       <view class="row">
         <view class="label-cell time-label">
-          <text class="label-title">全天</text>
-          <text class="label-time">{{dispersedTime.morningStart}}-{{dispersedTime.morningEnd}}</text>
-          <text class="label-time">{{dispersedTime.afternoonStart}}-{{dispersedTime.afternoonEnd}}</text>
+          <text class="label-title">上午</text>
+          <text class="label-time">{{dispersedTime.morningStart}}</text>
+          <text class="label-time">{{dispersedTime.morningEnd}}</text>
+          <view class="time-divider"></view>
+          <text class="label-title">下午</text>
+          <text class="label-time">{{dispersedTime.afternoonStart}}</text>
+          <text class="label-time">{{dispersedTime.afternoonEnd}}</text>
         </view>
         <view class="row-content">
           <view class="course-cell" wx:for="{{dispersedMorningCourses}}" wx:key="index">
             <text class="course-name">{{item.name}}</text>
-            <text class="course-room">{{item.room}}</text>
+            <view class="course-room">
+              <view class="room-dot"></view>
+              <text>{{item.room}}</text>
+            </view>
           </view>
         </view>
       </view>
@@ -95,9 +115,7 @@
     </view>
 
     <view class="action-row">
-      <!-- TODO: 分散项目 -> /pages/dispersed-project/dispersed-project -->
       <view class="action-btn" bindtap="goToPlaceholder" data-title="分散项目">分散项目</view>
-      <!-- TODO: 分散组队 -> /pages/dispersed-team/dispersed-team -->
       <view class="action-btn" bindtap="goToPlaceholder" data-title="分散组队">分散组队</view>
     </view>
   </view>

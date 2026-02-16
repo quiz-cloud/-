@@ -2,6 +2,7 @@ const { getSchedule } = require("../../services/schedule");
 
 Page({
   data: {
+    statusBarHeight: 20,
     selectedConcentratedIndex: 0,
     selectedDispersedIndex: 0,
     concentratedTime: {},
@@ -15,6 +16,10 @@ Page({
   },
 
   onLoad() {
+    const systemInfo = wx.getSystemInfoSync();
+    this.setData({
+      statusBarHeight: systemInfo.statusBarHeight || 20
+    });
     // 首次加载时获取课表数据。
     this.loadSchedule();
   },
@@ -46,6 +51,12 @@ Page({
       title: `${title}功能未接入`,
       icon: "none",
       duration: 2000
+    });
+  },
+
+  goBack() {
+    wx.switchTab({
+      url: "/pages/index/index"
     });
   }
 });
