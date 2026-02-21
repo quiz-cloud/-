@@ -20,14 +20,21 @@
 
       <!-- 请假日期 -->
       <view class="form-item">
-        <text class="item-label">请假日期</text>
-        <picker class="item-picker" mode="date" value="{{date}}" start="2024-01-01" end="2025-12-31" bindchange="onDateChange">
-          <view class="picker-content">
-            <text>{{date}}</text>
-            <text class="arrow">></text>
-          </view>
-        </picker>
-      </view>
+  <text class="item-label">请假日期</text>
+  <picker 
+    class="item-picker" 
+    mode="date" 
+    value="{{date}}" 
+    start="{{startDate}}" 
+    end="2025-12-31" 
+    bindchange="onDateChange"
+  >
+    <view class="picker-content">
+      <text>{{date}}</text>
+      <text class="arrow">></text>
+    </view>
+  </picker>
+</view>
 
       <!-- 请假理由 -->
       <view class="form-item-vertical">

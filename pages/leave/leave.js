@@ -4,13 +4,17 @@ Page({
     types: ["普通请假", "请假并补课"],
     typeIndex: 0,
     date: "2024-01-01",
+    startDate: "2024-01-01"// 新增：用于限制可选的最早日期 [cite: 3]
   },
 
   onLoad(options) {
     // 初始化日期为当天
     const today = new Date();
     const formatDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-    this.setData({ date: formatDate });
+    this.setData({ 
+      date: formatDate,
+      startDate: formatDate // 将可选开始日期设置为今天
+    });
   },
 
   onTypeChange(e) {
