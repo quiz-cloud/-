@@ -3,17 +3,22 @@ Page({
   data: {
     types: ["普通请假", "请假并补课"],
     typeIndex: 0,
-    date: "2024-01-01",
-    startDate: "2024-01-01"// 新增：用于限制可选的最早日期 [cite: 3]
+    date: "",
+  startDate: "", // 动态开始日期
+  endDate: ""    // 动态结束日期
   },
 
   onLoad(options) {
-    // 初始化日期为当天
     const today = new Date();
-    const formatDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const formatDate = `${year}-${month}-${day}`;
+  
     this.setData({ 
       date: formatDate,
-      startDate: formatDate // 将可选开始日期设置为今天
+      startDate: formatDate, // 限制只能从今天开始选择
+      endDate: `${year + 1}-${month}-${day}` // 自动推导一年后的日期为终点
     });
   },
 
